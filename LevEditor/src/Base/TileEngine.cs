@@ -42,16 +42,18 @@ namespace LevEditor
                         // More bounds checking.
                         if ((j + firstX >= 0) && (j + firstX < Zone.ZoneWidth))
                         {
+                            int row = i + firstY;
+                            int col = j + firstX;
                             // We render each tile in each layer at each position in ascending order.
-                            foreach (int tileID in Zone.Canvas[i + firstY, j + firstX])
+                            for (int layer = 0; layer < Zone.Canvas[row, col].Count; ++layer)
                             {
                                 spriteBatch.Draw(Tile.TilesetTexture,
-                                                    new Rectangle((j * Tile.TileWidth) - offsetX,
-                                                                (i * Tile.TileHeight) - offsetY,
-                                                                Tile.TileWidth,
-                                                                Tile.TileHeight),
-                                                    Tile.GetSourceRectangle(tileID),
-                                                    Color.White);
+                                                 new Rectangle((j * Tile.TileWidth) - offsetX,
+                                                               (i * Tile.TileHeight) - offsetY,
+                                                               Tile.TileWidth,
+                                                               Tile.TileHeight),
+                                                 Tile.GetSourceRectangle(Zone.Canvas[row, col][layer]),
+                                                 Color.White * LayerEditWindow.LayerIndexButtons[layer].Transparency);
                             }
                         }
                     }
