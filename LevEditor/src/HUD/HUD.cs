@@ -40,7 +40,7 @@ namespace LevEditor
         {
             fileWindow.Load(content, "Test_Content/BackgroundFileIOW.png");
             assetsWindow.Load(content, "Test_Content/BackgroundAssetsW.png");
-            toolsWindow.Load(content, "Test_Content/BackgroundTileEditW.png");
+            toolsWindow.Load(content, "Test_Content/BackgroundToolsW.png");
             layerEditWindow.Load(content, "Test_Content/BackgroundLayerEditW.png");
         }
 

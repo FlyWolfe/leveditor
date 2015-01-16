@@ -140,14 +140,13 @@
     <Compile Include="src\Base\Tile.cs" />
     <Compile Include="src\Base\TileEngine.cs" />
     <Compile Include="src\HUD\Window\AssetsWindow.cs" />
-    <Compile Include="src\HUD\Window\ToolsWindow.cs" />
     <Compile Include="src\HUD\Window\FileWindow.cs" />
     <Compile Include="src\HUD\HUD.cs" />
     <Compile Include="src\HUD\Window\LayerEditWindow.cs" />
     <Compile Include="src\Program.cs" />
     <Compile Include="src\Base\Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="src\HUD\Window\TileEditWindow.cs" />
+    <Compile Include="src\HUD\Window\ToolsWindow.cs" />
     <Compile Include="src\Base\Zone.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -173,16 +172,13 @@
     <Content Include="Content\Test_Content\BackgroundAssetsW.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Test_Content\BackgroundEntityEditW.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Content\Test_Content\BackgroundFileIOW.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Test_Content\BackgroundLayerEditW.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Test_Content\BackgroundTileEditW.png">
+    <Content Include="Content\Test_Content\BackgroundToolsW.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Tilesheet.png" />
