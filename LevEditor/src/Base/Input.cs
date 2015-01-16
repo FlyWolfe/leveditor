@@ -17,8 +17,7 @@ namespace LevEditor
         private static List<GestureSample> gestures = new List<GestureSample>();
         private static EdgeGesture edgeGesture;
 
-        private static Vector2 prevTap;
-        private static Vector2 prevGesturePosition;
+        private static Vector2 prevPosition;
 
         // Every time we complete an edge gesture, we toggle the HUD's display.
         private static bool displayHUD = false;
@@ -35,7 +34,7 @@ namespace LevEditor
         {
             get
             {
-                if (gesture.GestureType == GestureType.Tap && prevTap != gesture.Position)
+                if (gesture.GestureType == GestureType.Tap && prevPosition != gesture.Position)
                 {
                     return new Vector2(gesture.Position.X / Main.ScreenScale.X,
                                        gesture.Position.Y / Main.ScreenScale.Y);
@@ -61,7 +60,7 @@ namespace LevEditor
         {
             get
             {
-                if (gesture.GestureType == GestureType.FreeDrag && prevTap != gesture.Position)
+                if (gesture.GestureType == GestureType.FreeDrag && prevPosition != gesture.Position)
                 {
                     return new Vector2(gesture.Position.X / Main.ScreenScale.X,
                                        gesture.Position.Y / Main.ScreenScale.Y);
@@ -100,7 +99,7 @@ namespace LevEditor
 
         public static void Update(GameTime gameTime)
         {
-            prevTap = gesture.Position;
+            prevPosition = gesture.Position;
             gestures.Clear();
             while (TouchPanel.IsGestureAvailable)
             {
