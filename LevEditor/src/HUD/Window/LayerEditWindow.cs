@@ -12,40 +12,47 @@ namespace LevEditor
 {
     class LayerEditWindow : Window
     {
-        private Texture2D button1Texture;
-        private Texture2D button2Texture;
-        private Texture2D button3Texture;
-        private List<Button> layerIndexButtons;
+        private static List<LayerWindowButton> layerIndexButtons;
 
         private Texture2D sliderTexture;
-        private Rectangle slider;
-        private LayerWindowButton sliderButton;
+        private Rectangle sliderRect;
+
+        private Texture2D sliderButtonTexture;
+        private Button sliderButton;
 
         public static int SelectedLayer = 0;
 
-        public LayerEditWindow(Vector2 position, Vector2 dimensions) : base(position, dimensions)
+        public static List<LayerWindowButton> LayerIndexButtons
         {
-            layerIndexButtons = new List<Button>();
+            get { return layerIndexButtons; }
+        }
+
+        public LayerEditWindow(Vector2 position, Vector2 dimensions)
+            : base(position, dimensions)
+        {
+            layerIndexButtons = new List<LayerWindowButton>();
         }
 
         new public void Load(ContentManager content, string filePath)
         {
             base.Load(content, filePath);
 
-            Texture2D sliderButtonTexture = content.Load<Texture2D>("Test_Content/SliderButton.png");
-            button1Texture = content.Load<Texture2D>("Test_Content/1.png");
-            button2Texture = content.Load<Texture2D>("Test_Content/2.png");
-            button3Texture = content.Load<Texture2D>("Test_Content/3.png");
+            sliderButtonTexture = content.Load<Texture2D>("Test_Content/SliderButton.png");
+            sliderButton = new Button(new Rectangle(12, 184, 32, 32), 0); // Test values for now.
+
             sliderTexture = content.Load<Texture2D>("Test_Content/Slider.png");
+            sliderRect = new Rectangle(28, 200, sliderTexture.Width, sliderTexture.Height);
 
-            slider = new Rectangle(28, 200, sliderTexture.Width, sliderTexture.Height);
-            sliderButton = new LayerWindowButton(new Rectangle(12, 184, 32, 32), sliderButtonTexture, 0); // Test values for now.
+            List<Texture2D> buttonTextures = new List<Texture2D>();
+            buttonTextures.Add(content.Load<Texture2D>("Test_Content/1.png"));
+            buttonTextures.Add(content.Load<Texture2D>("Test_Content/2.png"));
+            buttonTextures.Add(content.Load<Texture2D>("Test_Content/3.png"));
 
-            // For testing, just using three buttons.
-            for (int i = 0; i < 3; ++i)
+            for (int i = 0; i < 3; ++i) // For testing, just using three buttons.
             {
                 // 42 to add a buffer of 10 pixels (size of button = 32px).
-                layerIndexButtons.Add(new Button(new Rectangle((42 * i) + 10, 15, 32, 32), i));
+                layerIndexButtons.Add(new LayerWindowButton(new Rectangle((42 * i) + 10, 15, 32, 32), buttonTextures[i], i));
+                layerIndexButtons[i].SliderValue = sliderRect.Location.X;
             }
         }
 
@@ -57,16 +64,22 @@ namespace LevEditor
                 {
                     if (BackgroundRectangle.Contains(Input.Tap))
                     {
-                        foreach (Button button in layerIndexButtons)
+                        foreach (LayerWindowButton button in layerIndexButtons)
                         {
                             if (button.Rect.Contains(Input.Tap))
+                            {
+                                // We have to set the slider's position to the saved position for this layer.
                                 SelectedLayer = button.ID;
+                                sliderButton.ChangeXPosition(button.SliderValue - sliderButton.Rect.Location.X);
+                            }
                         }
                     }
 
                     if (Input.Drag.X != 0)
                     {
+                        // Change the position of the slider, and then save its position for this layer.
                         ChangeSliderPosition((int)Input.Drag.X);
+                        layerIndexButtons[SelectedLayer].SliderValue = sliderButton.Rect.Location.X;
                     }
                 }
             }
@@ -77,20 +90,21 @@ namespace LevEditor
         new public void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
-            spriteBatch.Draw(button1Texture, layerIndexButtons[0].Rect, Color.White);
-            spriteBatch.Draw(button2Texture, layerIndexButtons[1].Rect, Color.White);
-            spriteBatch.Draw(button3Texture, layerIndexButtons[2].Rect, Color.White);
-            spriteBatch.Draw(sliderTexture, slider, Color.White);
-            spriteBatch.Draw(sliderButton.Texture, sliderButton.Rect, Color.White);
+            spriteBatch.Draw(sliderTexture, sliderRect, Color.White);
+            spriteBatch.Draw(sliderButtonTexture, sliderButton.Rect, Color.White);
+            foreach(LayerWindowButton button in layerIndexButtons)
+            {
+                spriteBatch.Draw(button.Texture, button.Rect, Color.White);
+            }
         }
 
         private void ChangeSliderPosition(int delta)
         {
             if (delta < 0) // Moving left.
             {
-                if (delta < (slider.X - sliderButton.Rect.Center.X)) // Comparing larger abs value.
+                if (delta < (sliderRect.X - sliderButton.Rect.Center.X)) // Comparing larger abs value.
                 {
-                    delta = slider.X - sliderButton.Rect.Center.X;
+                    delta = sliderRect.X - sliderButton.Rect.Center.X;
                     sliderButton.ChangeXPosition(delta);
                 }
 
@@ -100,9 +114,9 @@ namespace LevEditor
 
             else // Moving right.
             {
-                if (delta > ((slider.X + slider.Width) - sliderButton.Rect.Center.X))
+                if (delta > ((sliderRect.X + sliderRect.Width) - sliderButton.Rect.Center.X))
                 {
-                    delta = (slider.X + slider.Width) - sliderButton.Rect.Center.X;
+                    delta = (sliderRect.X + sliderRect.Width) - sliderButton.Rect.Center.X;
                     sliderButton.ChangeXPosition(delta);
                 }
 
