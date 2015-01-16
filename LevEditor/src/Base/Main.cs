@@ -49,9 +49,7 @@ namespace LevEditor
             float scaleX = (float)GraphicsDevice.Viewport.Width / (float)VirtualScreenWidth;
             float scaleY = (float)GraphicsDevice.Viewport.Height / (float)VirtualScreenHeight;
 
-            /* To support multiple resolutions, move these to the update/draw
-             * methods so they're updated every time the game loops.
-             */ 
+            // Can move to Update(GameTime) to support windowed mode.
             screenScale = new Vector3(scaleX, scaleY, 1.0f);
             ScreenScale = screenScale;
             scaleMatrix = Matrix.CreateScale(screenScale);
