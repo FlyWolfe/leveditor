@@ -14,7 +14,6 @@ namespace LevEditor
     public static class Input
     {
         private static GestureSample gesture = default(GestureSample);
-        private static List<GestureSample> gestures = new List<GestureSample>();
         private static EdgeGesture edgeGesture;
 
         private static Vector2 prevPosition;
@@ -60,7 +59,7 @@ namespace LevEditor
         {
             get
             {
-                if (gesture.GestureType == GestureType.FreeDrag && prevPosition != gesture.Position)
+                if (prevPosition != gesture.Position)
                 {
                     return new Vector2(gesture.Position.X / Main.ScreenScale.X,
                                        gesture.Position.Y / Main.ScreenScale.Y);
@@ -100,7 +99,6 @@ namespace LevEditor
         public static void Update(GameTime gameTime)
         {
             prevPosition = gesture.Position;
-            gestures.Clear();
             while (TouchPanel.IsGestureAvailable)
             {
                 gesture = TouchPanel.ReadGesture();
