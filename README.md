@@ -1,4 +1,4 @@
-# leveditor
+# LevEditor
 Touch-based level editor.
 
 This project was created with the intention to bring level editing to touch-enabled devices - to provide 2D game developers a reason to find productivity in tablets aside from the occasional doodle. It was also intended to explore and examine the possibility of game development tools being developed specifically for touch and/or mobile devices, and how we might be able to further utilize this rather recent but incredibly popular wave of technology.
