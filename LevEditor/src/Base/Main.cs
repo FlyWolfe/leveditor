@@ -30,11 +30,10 @@ namespace LevEditor
 
             Content.RootDirectory = "Content";
 
-            // Setting a temporary value for now...
+            // Setting a temporary value for now.
             Zone.ZoneWidth = 100;
             Zone.ZoneHeight = 100;
 
-            // Could add things like double tap and pinch too, but we'll worry about those when we're far along enough.
             TouchPanel.EnabledGestures = GestureType.FreeDrag | GestureType.Tap;
             this.IsMouseVisible = true;
             this.IsFixedTimeStep = false;
@@ -106,7 +105,7 @@ namespace LevEditor
                 }
             }
 
-            if (!hud.Contains(Input.GesturePosition) || !Input.DisplayHUD)
+            if ((!hud.Contains(Input.GesturePosition) || !Input.DisplayHUD) && Input.GesturePosition != new Vector2(-1, -1))
             {
                 camera.Position = Vector2.Clamp(camera.Position - Input.Drag,
                                                 new Vector2(-500, -500),
