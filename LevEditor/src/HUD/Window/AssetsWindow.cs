@@ -10,10 +10,6 @@ using System.Threading.Tasks;
 
 namespace LevEditor
 {
-    /* Add an option for paint mode? e.g. Can't pan window, but will paint selected tile.
-     * Also add a smart grab mode; waits for your finger to complete a polygon shape (straight lines only),
-     * picks up all tiles selected, and you can move the shape. Double tap to place.
-     */
     class AssetsWindow : Window
     {
         // Used for optimizing sprite button rendering.
@@ -28,7 +24,8 @@ namespace LevEditor
 
         public static int SelectedTile;
 
-        public AssetsWindow(Vector2 position, Vector2 dimensions) : base(position, dimensions)
+        public AssetsWindow(Vector2 position, Vector2 dimensions)
+            : base(position, dimensions)
         {
             startButtonRender = new Point(16, (int)position.Y - 16);
             endButtonRender = new Point(16, (int)position.Y + (int)dimensions.Y + 48);
@@ -116,7 +113,10 @@ namespace LevEditor
                     foreach (Button button in spriteDictionary[i])
                     {
                         if (button.Rect.Contains(tap))
+                        {
+                            Debug.WriteLine("ID: " + button.ID);
                             return button.ID;
+                        }
                     }
                 }
             }
