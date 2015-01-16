@@ -35,6 +35,14 @@ namespace LevEditor
             get { return rect; }
         }
 
+        public Button(Rectangle rectangle)
+        {
+            this.rect = rectangle;
+            id = -1;
+            rowID = -1;
+            columnID = -1;
+        }
+
         public Button(Rectangle rectangle, int ID)
         {
             this.rect = rectangle;
