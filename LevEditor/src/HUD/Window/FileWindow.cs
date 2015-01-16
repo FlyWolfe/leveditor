@@ -19,7 +19,8 @@ namespace LevEditor
      */
     class FileWindow : Window
     {
-        public FileWindow(Vector2 position, Vector2 dimensions) : base(position, dimensions)
+        public FileWindow(Vector2 position, Vector2 dimensions)
+            : base(position, dimensions)
         {
         }
 

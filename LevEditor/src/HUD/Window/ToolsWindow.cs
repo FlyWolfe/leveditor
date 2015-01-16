@@ -11,7 +11,8 @@ namespace LevEditor
 {
     class ToolsWindow : Window
     {
-        public ToolsWindow(Vector2 position, Vector2 dimensions) : base(position, dimensions)
+        public ToolsWindow(Vector2 position, Vector2 dimensions)
+            : base(position, dimensions)
         {
         }
 
