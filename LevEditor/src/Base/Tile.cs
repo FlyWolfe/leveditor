@@ -11,6 +11,7 @@ namespace LevEditor
     static class Tile
     {
         public static Texture2D TilesetTexture;
+        public static Texture2D GridTexture;
 
         public const int TileWidth = 32;
         public const int TileHeight = 32;
