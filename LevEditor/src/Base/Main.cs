@@ -63,6 +63,7 @@ namespace LevEditor
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             Tile.TilesetTexture = Content.Load<Texture2D>("Tilesheet.png");
+            Tile.GridTexture = Content.Load<Texture2D>("Grid.png");
             hud.Load(Content);
         }
 
