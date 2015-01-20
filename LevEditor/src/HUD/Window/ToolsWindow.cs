@@ -11,6 +11,8 @@ namespace LevEditor
 {
     class ToolsWindow : Window
     {
+        public static bool DisplayGrid = false;
+
         public ToolsWindow(Vector2 position, Vector2 dimensions)
             : base(position, dimensions)
         {
@@ -23,6 +25,15 @@ namespace LevEditor
 
         public void Update(GameTime gameTime)
         {
+            if (BackgroundRectangle.Contains(Input.Tap))
+            {
+                if (DisplayGrid)
+                    DisplayGrid = false;
+
+                else
+                    DisplayGrid = true;
+            }
+
             base.Update(gameTime);
         }
 
