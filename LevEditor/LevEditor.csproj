@@ -181,6 +181,9 @@
     <Content Include="Content\Test_Content\BackgroundToolsW.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Grid.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Tilesheet.png" />
     <Content Include="Content\Test_Content\Slider.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,6 +55,16 @@ namespace LevEditor
                                                                Tile.TileHeight),
                                                  Tile.GetSourceRectangle(Zone.Canvas[row, col][layer]),
                                                  Color.White * LayerEditWindow.LayerIndexButtons[layer].Transparency);
+                            }
+
+                            if (ToolsWindow.DisplayGrid)
+                            {
+                                spriteBatch.Draw(Tile.GridTexture,
+                                                 new Rectangle((j * Tile.TileWidth) - offsetX,
+                                                               (i * Tile.TileHeight) - offsetY,
+                                                               Tile.TileWidth,
+                                                               Tile.TileHeight),
+                                                 Color.White);
                             }
                         }
                     }
