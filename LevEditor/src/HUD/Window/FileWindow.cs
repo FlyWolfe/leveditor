@@ -31,6 +31,12 @@ namespace LevEditor
 
         public void Update(GameTime gameTime)
         {
+            if (BackgroundRectangle.Contains(Input.Tap))
+            {
+                System.Diagnostics.Debug.WriteLine("Exporting.");
+                FileExporter.ExportCanvas();
+            }
+
             base.Update(gameTime);
         }
 
