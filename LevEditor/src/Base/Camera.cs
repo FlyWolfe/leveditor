@@ -71,7 +71,6 @@ namespace LevEditor
             return Vector2.Transform(worldPos, transform);
         }
 
-        // Why not allow unrestricted panning, they just can't edit anything outside of the map they wanted to build?
         public void Update(GameTime gameTime)
         {
             transform = Matrix.CreateTranslation(-position.X, -position.Y, 0);
