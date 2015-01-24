@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="LevEditor.App">
-      <m2:VisualElements DisplayName="LevEditor" Description="LevEditor" BackgroundColor="#464646" ForegroundText="light" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png">
+      <m2:VisualElements DisplayName="LevEditor" Description="A lightweight and powerful 2D level editor for touch-enabled devices." BackgroundColor="#464646" ForegroundText="light" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png">
         <m2:DefaultTile>
           <m2:ShowNameOnTiles>
             <m2:ShowOn Tile="square150x150Logo" />
@@ -30,5 +30,6 @@
   </Applications>
   <Capabilities>
     <Capability Name="internetClient" />
+    <Capability Name="removableStorage" />
   </Capabilities>
 </Package>
