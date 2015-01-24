@@ -9,13 +9,7 @@ using System.Threading.Tasks;
 
 namespace LevEditor
 {
-    /* TODO: Change the layer loop to be a for instead of foreach to account for layer transparency;
-     * e.g. checking if layer i has a particular transparency to be multiplied by.
-     * 
-     * TODO: Add a final texture at the top to serve as a grid for the tiles;
-     * difficult to see exactly where you're placing a tile with touch.
-     * 
-     * TODO: Consider switching 2D array to a dictionary?
+    /* TODO: Consider switching 2D array to a dictionary?
      */
     class TileEngine
     {
@@ -60,10 +54,8 @@ namespace LevEditor
                             if (ToolsWindow.DisplayGrid)
                             {
                                 spriteBatch.Draw(Tile.GridTexture,
-                                                 new Rectangle((j * Tile.TileWidth) - offsetX,
-                                                               (i * Tile.TileHeight) - offsetY,
-                                                               Tile.TileWidth,
-                                                               Tile.TileHeight),
+                                                 new Vector2((j * Tile.TileWidth) - offsetX,
+                                                             (i * Tile.TileHeight) - offsetY),
                                                  Color.White);
                             }
                         }

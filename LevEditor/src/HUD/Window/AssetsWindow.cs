@@ -56,10 +56,10 @@ namespace LevEditor
                 {
                     // We add 1 to the x and y coordinate to act as a border between tiles.
                     tmpValues.Add(new Button(new Rectangle((j * (Tile.TileWidth + 1)) + BackgroundRectangle.Location.X,
-                                                          (i * (Tile.TileHeight + 1)) + BackgroundRectangle.Location.Y,
-                                                          Tile.TileWidth,
-                                                          Tile.TileHeight),
-                                            tileID, j, i));
+                                                           (i * (Tile.TileHeight + 1)) + BackgroundRectangle.Location.Y,
+                                                           Tile.TileWidth,
+                                                           Tile.TileHeight),
+                                             tileID, j, i));
                     ++tileID;
                 }
 
@@ -114,7 +114,6 @@ namespace LevEditor
                     {
                         if (button.Rect.Contains(tap))
                         {
-                            Debug.WriteLine("ID: " + button.ID);
                             return button.ID;
                         }
                     }
