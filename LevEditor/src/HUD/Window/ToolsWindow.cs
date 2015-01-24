@@ -27,11 +27,7 @@ namespace LevEditor
         {
             if (BackgroundRectangle.Contains(Input.Tap))
             {
-                if (DisplayGrid)
-                    DisplayGrid = false;
-
-                else
-                    DisplayGrid = true;
+                DisplayGrid = (DisplayGrid) ? false : true;
             }
 
             base.Update(gameTime);
